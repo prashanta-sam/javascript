@@ -3,11 +3,37 @@
 ### level 1:
 1. Convert [1, 2, 3] to [2, 3, 4] using one line of code.
 Output should be [2, 3, 4]
+================Answer 1========================================
+let arr=[1,2,3]
+let newArr=arr.map((item)=> item+1)
+console.log(newArr)
+=========================================================== End============================
+
+
 2. Calculate total of all the numbers in array [1, 2, 3] using one line of code.
 Output should be a number: 6
+================Answer 2========================================
+let arr=[1,2,3]
+let newArr=arr.reduce((item,sum)=> sum+=item)
+console.log(newArr) // 6
+=========================================================== End============================
+
 3. Print all the properties of the object along with value {name: 'Elie', rank: 'Pro'}.
 Output should be a string: "name: Elie, rank: Pro"
-​
+================Answer 3========================================
+let obj={name: 'Elie', rank: 'Pro'}
+let s=""
+let last = Object.keys(obj).pop();
+for (let i in obj)
+{
+    s+=i+":"+obj[i]
+    s+=(last==i) ? "" : ","
+}
+print(s)
+=========================================================== End============================
+
+
+
 ### level 2:
 1. Write a function to remove all even numbers from an Array.
 ```
@@ -17,12 +43,27 @@ Input array:
 ```
 Output should be array: [1, 3, 7]
 ```
+================Answer level 2.1========================================
+
+let arr=[1, 3, 4, 6, 7, 8]
+let newArr=arr.filter(a=> a%2)
+print(newArr)
+=========================================================== End============================
+
+
 2. Replace all the vowels in a string with uppercase vowels.
 ```
 Input string: 'Elie'
 ```
 ```
 Output should be string: 'ElIE'
+================Answer level 2.2========================================
+
+let name ='Elie'
+print(name.toUpperCase())
+
+
+
 ```
 3. Write a function to find the maximum number in an array.
 ```
@@ -31,6 +72,15 @@ Input array: [1, 3, 4, 6, 7, 8, 2, 5]
 ```
 Output should be a number: 8
 ```
+================Answer level 2.3 ========================================
+
+let arr=[1, 3, 4, 6, 7, 8, 2, 5]
+let a=arr.reduce((v,m)=>{
+    return v > m ? v : m
+})
+print(a)
+
+
 ​
 ### level 3:
 1. Write a recursive function that transforms all the strings to uppercase.
@@ -76,6 +126,46 @@ const user = {
     ]
 }
 ```
+================Answer level 3.1 ========================================
+const user = {
+    name: "Elie",
+    job: "Instructor",
+    workDetails: {
+        type: "Part Time",
+        hours: "40 hours"
+    }
+    educationQualifications: [
+        {
+            name: "Full Stack",
+            type: "Certification"
+        },
+        {
+            name: "Javascript",
+            type: "Certification"
+        }
+    ]
+}
+const convertToUpper=(item)=>{
+      if (Array.isArray(item)) 
+      {
+        return item.map(el => convertToUpper(el))
+          
+      }
+      else if (item !== Object(item)) {
+        return item.toString().toUpperCase();
+      }
+    
+     return Object.fromEntries(
+      		 Object.entries(item).map(([key, value]) => [key,convertToUpper(value)])
+       )  
+  
+}
+
+console.log(convertToUpper(user));
+
+================END ========================================
+
+
 2. Write a function that takes a string with key value pairs sum the value of all unique properties and return an object from it.
 ```
 Input string: "a:2,b:3,c:4,a:5,b:6"
