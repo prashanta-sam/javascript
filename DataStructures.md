@@ -173,10 +173,64 @@ Input string: "a:2,b:3,c:4,a:5,b:6"
 ```
 Output should be object: {a: 7, b: 9, c: 4}
 ```
+
+================Answer Level 3.2 ========================================
+let st="a:2,b:3,c:4,a:5,b:6"
+let sp_arr=st.split(',')
+let obj={}
+for (let i in sp_arr)
+  {
+    let item=sp_arr[i] || []
+    let arr=item.split(':') || []
+    let k=arr[0] || ""
+    let v=parseInt(arr[1]) || 0
+    obj[k]= (isNaN(parseInt(obj[k])) ? 0 : parseInt(obj[k]) ) + v
+  }
+console.log(obj) //output
+================END ========================================
 3. Check for balanced parentheses using a stack
 ```
 Example:
 exp = "{[({})]}" should be valid
 but "{[(]} should be invalid
 ```
+================Level 3.3 ========================================
+
+function isBlanacedBracket(str)
+{  
+    let stack=[] // created an empty array
+    for (let i in str)
+    {
+      	// stored a bracket from string to 'b' variable
+          let b=str[i]; 
+        // checked for opening bracket
+          if(b=='(' || b=='{' || b=='[')
+          {   
+            // pushed the bracket to the stack
+            stack.push(b)           
+          } 
+      	 // checked for closing bracket
+          else if( b == ')' || b=='}' || b==']')
+          {
+            //used pop method to remove the corresponding closing bracket
+              const p=stack.pop();
+            //checked the corresponding bracket is closing or not 
+            // if not then return false  
+            if(
+                 ((b == ')' && p!='(')) ||
+                 ((b == '}' && p!='{')) || 
+                 ((b == ']' && p!='['))
+                )
+               return false
+          }  
+    }  
+   // finaly sends the count of item in stack  
+  	return (stack.length==0)
+}
+const st="{[()]}"
+const result=isBlanacedBracket(st) ? 'Balanced' :'Not Balanced';
+console.log(result)
+
+
+================END ========================================
 
