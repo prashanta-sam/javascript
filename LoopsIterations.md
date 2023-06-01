@@ -15,6 +15,35 @@ Write a function in Javascript to print the following pattern.
 
 The function can take the number of rows as input. The pattern should be printed in the console. Minimum number of rows should be 3.
 
+=============================Answer ============
+
+function buildTriangle(row)
+{
+    let output="";
+    for(let i =1;i<=row;i++)
+    {
+         output+='\b'.repeat(row-i)
+         for(let j =1;j<=i;j++)
+         {
+            output+=j
+         }
+         for(let j =i-1;j>=1;j--)
+         {
+            output+=j
+         }
+         output+="\n"
+    }
+    
+    return output;
+}
+console.log(buildTriangle(5))
+
+
+=============
+
+
+
+
 ## Level 2
 
 ---
@@ -29,6 +58,25 @@ Write a function in Javascript to print the sum of the first n fibonacci numbers
 1 1 2 3 5 8
 Sum: 20
 ```
+=============================Answer ============
+
+function fibbo(n)
+{
+    let c=0,a=0,b=sum=output=1;
+    for(let i =2;i<=n;i++)
+    {
+            c=a+b
+            output+=" "+c 
+            sum+=c
+            a=b
+            b=c
+           
+       
+    }
+    console.log(output+"\n"+"Sum: "+sum)
+}
+fibbo(6)
+=============================END ============
 
 ## Level 3
 
@@ -73,3 +121,15 @@ Normalize the following object to an array of objects.
   { id: 9, name: "Tom Smith", age: 40, reaction: 'loved' }
 ]
 ```
+========================================= Answer ====================================
+let newArr=[]
+for ( let key in obj )
+{
+  let NewObj = obj[key].map((o)=>{
+        return {...o,reaction:key}
+    })
+    newArr.push(...NewObj)
+}
+console.log(newArr)
+
+============================================ END=============================
